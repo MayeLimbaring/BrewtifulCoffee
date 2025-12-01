@@ -5,7 +5,7 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         Coffee myCoffee = null;
 
-        // Step 1: Choose base coffee
+        // --- Step 1: Choose base coffee ---
         System.out.println("Welcome to Brewtiful Coffee!");
         System.out.println("Choose a base coffee:");
         System.out.println("1. Black Coffee (₱100)");
@@ -19,14 +19,14 @@ public class Main {
                 myCoffee = new BlackCoffee();
                 break;
             case 2:
-                myCoffee = new Espresso(); // we'll create this class next
+                myCoffee = new Espresso();
                 break;
             default:
                 System.out.println("Invalid choice, defaulting to Black Coffee.");
                 myCoffee = new BlackCoffee();
         }
 
-        // Step 2: Add toppings
+        // --- Step 2: Add toppings (here is your while loop) ---
         boolean addingToppings = true;
 
         while (addingToppings) {
@@ -34,6 +34,7 @@ public class Main {
             System.out.println("1. Milk (₱25)");
             System.out.println("2. Caramel Syrup (₱40)");
             System.out.println("3. Whipped Cream (₱30)");
+            System.out.println("4. Sugar (₱10)");
 
             int toppingChoice = scanner.nextInt();
             scanner.nextLine(); // consume newline
@@ -51,12 +52,15 @@ public class Main {
                 case 3:
                     myCoffee = new WhippedCream(myCoffee);
                     break;
+                case 4:
+                    myCoffee = new Sugar(myCoffee);
+                    break;
                 default:
                     System.out.println("Invalid choice. Try again.");
             }
         }
 
-        // Step 3: Show final order
+        // --- Step 3: Show final order ---
         System.out.println("\nYour order: " + myCoffee.getDescription());
         System.out.println("Total cost: ₱" + myCoffee.getCost());
 
